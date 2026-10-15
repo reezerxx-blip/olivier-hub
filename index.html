@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Olivier – Branding visuel & création de sites web</title>
+<meta name="description" content="Olivier, à Lyon : personal branding visuel (photo de profil professionnelle) et création de sites web sur mesure. Deux vitrines, un seul interlocuteur.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#0b0307">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Olivier – Branding visuel & création de sites web">
+<meta property="og:description" content="Deux vitrines : personal branding visuel et création de sites web sur mesure.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%230b0307'/%3E%3Ctext x='32' y='42' font-family='sans-serif' font-size='28' font-weight='700' text-anchor='middle' fill='%23e5102f'%3EO%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0307; --surface:#14070c; --text:#f4ece9; --muted:#a8969a;
+  --accent:#e5102f; --accent-soft:#ff4d63; --border:rgba(229,16,47,.28);
+  --font-display:'Bricolage Grotesque',sans-serif; --font-body:'DM Sans',sans-serif; --font-mono:'JetBrains Mono',monospace;
+  --s1:8px; --s2:16px; --s3:24px; --s4:32px; --s5:48px; --s6:64px;
+  --r:4px;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:400 16px/1.6 var(--font-body);min-height:100vh;overflow-x:hidden;
+  background-image:
+    radial-gradient(60% 50% at 80% 0%,rgba(229,16,47,.22),transparent 70%),
+    linear-gradient(rgba(229,16,47,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(229,16,47,.07) 1px,transparent 1px);
+  background-size:auto,48px 48px,48px 48px;
+  background-attachment:fixed;animation:grid 20s linear infinite}
+@keyframes grid{to{background-position:0 0,0 48px,48px 0}}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.03;
+  background:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 3px)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 var(--s3)}
+.mono{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-soft)}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:var(--s5);align-items:center;padding:var(--s6) 0 var(--s5)}
+.status{display:inline-flex;align-items:center;gap:var(--s1);padding:6px 12px;border:1px solid var(--border);border-radius:99px;background:rgba(229,16,47,.08)}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.35}}
+h1{font:800 clamp(40px,7vw,76px)/1.02 var(--font-display);letter-spacing:-.03em;margin:var(--s3) 0 var(--s2)}
+h1 em{font-style:normal;color:var(--accent);text-shadow:0 0 40px rgba(229,16,47,.55)}
+.lead{color:var(--muted);max-width:46ch}
+.photo{position:relative;justify-self:center;width:100%;max-width:340px;aspect-ratio:3/4}
+.photo img{width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--r);filter:saturate(1.05)}
+.photo::before{content:"";position:absolute;inset:-18px;background:radial-gradient(closest-side,rgba(229,16,47,.45),transparent);filter:blur(30px);z-index:-1}
+.photo i{position:absolute;width:22px;height:22px;border:2px solid var(--accent-soft);animation:blink 3s infinite}
+.photo i:nth-of-type(1){top:-8px;left:-8px;border-right:0;border-bottom:0}
+.photo i:nth-of-type(2){top:-8px;right:-8px;border-left:0;border-bottom:0}
+.photo i:nth-of-type(3){bottom:-8px;left:-8px;border-right:0;border-top:0}
+.photo i:nth-of-type(4){bottom:-8px;right:-8px;border-left:0;border-top:0}
+.photo span{position:absolute;left:var(--s2);bottom:var(--s2);padding:4px 10px;background:rgba(11,3,7,.8);border:1px solid var(--border);backdrop-filter:blur(6px)}
+@keyframes blink{50%{border-color:var(--accent)}}
+.photo{animation:float 6s ease-in-out infinite,rise 1s .2s cubic-bezier(0,0,.2,1) both}
+@keyframes float{50%{transform:translateY(-10px)}}
+.photo::after{content:"";position:absolute;left:0;right:0;height:2px;background:var(--accent-soft);box-shadow:0 0 18px 4px rgba(255,77,99,.7);animation:scan 4s ease-in-out infinite}
+@keyframes scan{0%{top:0;opacity:0}10%,90%{opacity:.9}100%{top:100%;opacity:0}}
+.hero>div:first-child>*{animation:rise .8s cubic-bezier(0,0,.2,1) both}
+.hero>div:first-child>:nth-child(2){animation-delay:.12s}
+.hero>div:first-child>:nth-child(3){animation-delay:.24s}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}}
+
+/* VITRINES */
+.section-label{display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)}
+.section-label::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+.vitrines{display:grid;grid-template-columns:1fr 1fr;gap:var(--s3);padding-bottom:var(--s5)}
+.card{--mx:50%;--my:50%;position:relative;display:flex;flex-direction:column;gap:var(--s2);min-height:340px;padding:var(--s4);
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;color:inherit;text-decoration:none;
+  transition:transform .2s cubic-bezier(0,0,.2,1),border-color .2s;animation:glow 4s ease-in-out infinite}
+.card:nth-child(2){animation-delay:1.6s}
+.card::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .35s;
+  background:radial-gradient(320px circle at var(--mx) var(--my),rgba(229,16,47,.22),transparent 70%)}
+.card::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(105deg,transparent 40%,rgba(255,77,99,.14) 50%,transparent 60%);background-size:250% 100%;animation:sheen 5s infinite}
+.card:hover{transform:translateY(-3px);border-color:var(--accent)}
+.card:hover::before{opacity:1}
+.card.main{background:linear-gradient(160deg,#2a0610,var(--surface) 65%);border-color:var(--accent);box-shadow:0 0 60px -20px rgba(229,16,47,.6)}
+@keyframes glow{50%{box-shadow:0 0 40px -18px rgba(229,16,47,.55)}}
+@keyframes sheen{from{background-position:150% 0}to{background-position:-100% 0}}
+.card h2{font:800 clamp(28px,3.6vw,38px)/1.08 var(--font-display);letter-spacing:-.02em}
+.card p{color:var(--muted);max-width:40ch}
+.card ul{list-style:none;padding:0;display:grid;gap:10px;color:var(--muted);font-size:15px}
+.card li{display:flex;gap:10px}
+.card li::before{content:"";flex:none;width:6px;height:6px;margin-top:9px;background:var(--accent);transform:rotate(45deg)}
+.go{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:var(--s2);padding-top:var(--s2);border-top:1px dashed var(--border)}
+.go b{font:700 15px var(--font-display);color:var(--text)}
+.go span{display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--accent);border-radius:var(--r);font-size:20px;color:var(--accent-soft);transition:background .15s,color .15s,transform .15s}
+.card:hover .go span{background:var(--accent);color:#fff;transform:translateX(4px)}
+.card:focus-visible,.btn:focus-visible,a:focus-visible{outline:2px solid var(--text);outline-offset:3px}
+
+/* CTA */
+.cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--s3);padding:var(--s4);border:1px solid var(--border);border-radius:var(--r);margin-bottom:var(--s6)}
+.cta p{font:700 clamp(20px,3vw,28px)/1.2 var(--font-display)}
+.actions{display:flex;flex-wrap:wrap;gap:var(--s2)}
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 var(--s4);background:var(--accent);color:#fff;font:700 15px var(--font-display);
+  text-decoration:none;border-radius:var(--r);box-shadow:0 0 30px -4px rgba(229,16,47,.7);transition:background .15s,transform .15s}
+.btn:hover{background:var(--accent-soft);transform:translateY(-2px)}
+.btn.alt{background:transparent;border:1px solid var(--accent);box-shadow:none}
+.btn.alt:hover{background:rgba(229,16,47,.15)}
+.btn:not(.alt)::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.35) 50%,transparent 60%);transform:translateX(-120%);animation:shine 3.5s infinite}
+@keyframes shine{40%,100%{transform:translateX(120%)}}
+footer{padding-bottom:var(--s4);color:var(--muted);font-size:13px;text-align:center}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(0,0,.2,1),transform .7s cubic-bezier(0,0,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.card.reveal.in:hover{transform:translateY(-3px)}
+
+@media(max-width:860px){.hero{grid-template-columns:1fr;padding-top:var(--s5)}.photo{order:-1;max-width:260px}.vitrines{grid-template-columns:1fr}.card{min-height:0}}
+@media(max-width:480px){.card,.cta{padding:var(--s3)}.btn{width:100%}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <section class="hero">
+    <div>
+      <span class="status mono"><span class="dot"></span>Lyon · Disponible</span>
+      <h1>Votre image,<br>votre site. <em>Sur mesure.</em></h1>
+      <p class="lead">Je m’appelle Olivier. J’aide les professionnels à soigner leur image en ligne : portrait et personal branding d’un côté, site web de l’autre. Choisissez la vitrine qui vous correspond.</p>
+    </div>
+    <div class="photo">
+      <i></i><i></i><i></i><i></i>
+      <img src="pp_olivier_web.jpg" alt="Portrait d’Olivier sur fond rouge" width="680" height="907" fetchpriority="high" decoding="async">
+      <span class="mono">Olivier · Lyon</span>
+    </div>
+  </section>
+
+  <div class="section-label"><span class="mono">Mes deux vitrines</span></div>
+  <section class="vitrines" aria-label="Mes deux vitrines">
+    <a class="card main" href="https://reezerxx-blip.github.io/olivier-ruminski-portfolio/">
+      <span class="mono">01 / Branding</span>
+      <h2>Personal branding visuel</h2>
+      <p>Une photo de profil professionnelle et une image cohérente, pour que l’on vous remarque dès le premier regard.</p>
+      <ul>
+        <li>Photo de profil professionnelle</li>
+        <li>Identité visuelle personnelle</li>
+        <li>Pensé pour LinkedIn, site et réseaux</li>
+      </ul>
+      <div class="go"><b>Voir la vitrine branding</b><span aria-hidden="true">→</span></div>
+    </a>
+
+    <a class="card" href="https://reezerxx-blip.github.io/vitrine-developpeur/">
+      <span class="mono">02 / Développeur</span>
+      <h2>Création de sites web</h2>
+      <p>Des sites rapides, soignés et pensés pour convertir. Un tarif clair, sans surprise.</p>
+      <ul>
+        <li>Site vitrine ou site complet, dès 500 €</li>
+        <li>Responsive, SEO de base, mise en ligne incluse</li>
+        <li>Maintenance dès 30 € / mois</li>
+      </ul>
+      <div class="go"><b>Voir la vitrine développeur</b><span aria-hidden="true">→</span></div>
+    </a>
+  </section>
+
+  <section class="cta">
+    <p>Un projet en tête ?<br>Parlons-en.</p>
+    <div class="actions">
+      <a class="btn" href="tel:+33621604344">06 21 60 43 44</a>
+      <a class="btn alt" href="mailto:ruminskiolivier@gmail.com?subject=Prise%20de%20contact">ruminskiolivier@gmail.com</a>
+    </div>
+  </section>
+
+  <footer>© 2026 Olivier — Branding visuel &amp; création de sites web</footer>
+</main>
+
+<script>
+document.querySelectorAll('.card,.cta').forEach((el,i)=>{el.classList.add('reveal');el.style.transitionDelay=(i%3)*120+'ms'});
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;
+  e.target.classList.add('in');io.unobserve(e.target);
+}),{threshold:.2});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.querySelectorAll('.card').forEach(c=>{
+  c.addEventListener('pointermove',e=>{
+    const r=c.getBoundingClientRect();
+    c.style.setProperty('--mx',(e.clientX-r.left)+'px');
+    c.style.setProperty('--my',(e.clientY-r.top)+'px');
+  });
+});
+</script>
+</body>
+</html>
