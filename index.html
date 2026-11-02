@@ -3,16 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Olivier – Branding visuel & création de sites web</title>
-<meta name="description" content="Olivier, à Lyon : personal branding visuel (photo de profil professionnelle) et création de sites web sur mesure. Deux vitrines, un seul interlocuteur.">
+<title>Olivier Ruminski – Développeur web et branding visuel, Lyon</title>
+<meta name="description" content="Olivier Ruminski, 22 ans, Lyon. Diplômé en informatique et branding visuel. Vitrine branding visuel, offre de création de sites web et sélection de réalisations.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="theme-color" content="#0b0307">
+<!-- TODO une fois le domaine connu : <link rel="canonical" href="https://TON-DOMAINE/"> et og:url / og:image en URL absolue -->
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:title" content="Olivier – Branding visuel & création de sites web">
-<meta property="og:description" content="Deux vitrines : personal branding visuel et création de sites web sur mesure.">
-<meta name="twitter:card" content="summary">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%230b0307'/%3E%3Ctext x='32' y='42' font-family='sans-serif' font-size='28' font-weight='700' text-anchor='middle' fill='%23e5102f'%3EO%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="Olivier Ruminski – Développeur web et branding visuel, Lyon">
+<meta property="og:description" content="Branding visuel, création de sites web et réalisations d’Olivier Ruminski, Lyon.">
+<meta property="og:image" content="assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Portrait d’Olivier Ruminski sur fond rouge sombre">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Olivier Ruminski – Développeur web et branding visuel, Lyon">
+<meta name="twitter:description" content="Branding visuel, création de sites web et réalisations d’Olivier Ruminski, Lyon.">
+<meta name="twitter:image" content="assets/og.jpg">
+<meta name="twitter:image:alt" content="Portrait d’Olivier Ruminski sur fond rouge sombre">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -20,165 +29,270 @@
 :root{
   --bg:#0b0307; --surface:#14070c; --text:#f4ece9; --muted:#a8969a;
   --accent:#e5102f; --accent-soft:#ff4d63; --border:rgba(229,16,47,.28);
+  --accent-rgb:229,16,47; --soft-rgb:255,77,99; --bg-rgb:11,3,7; --main-bg:#2a0610; --scan:#fff; --btn-ink:#fff;
   --font-display:'Bricolage Grotesque',sans-serif; --font-body:'DM Sans',sans-serif; --font-mono:'JetBrains Mono',monospace;
   --s1:8px; --s2:16px; --s3:24px; --s4:32px; --s5:48px; --s6:64px;
   --r:4px;
 }
+/* Variante claire : mêmes teintes, valeurs inversées (la vitrine de référence est sombre seule) */
+@media(prefers-color-scheme:light){:root{
+  --bg:#f6eeec; --surface:#fbf5f3; --text:#24090f; --muted:#5e484d;
+  --accent:#c70d2a; --accent-soft:#b00c25; --border:rgba(199,13,42,.32);
+  --accent-rgb:199,13,42; --soft-rgb:176,12,37; --bg-rgb:246,238,236; --main-bg:#f3d9d7; --scan:#000;
+}}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font:400 16px/1.6 var(--font-body);min-height:100vh;overflow-x:hidden;
   background-image:
-    radial-gradient(60% 50% at 80% 0%,rgba(229,16,47,.22),transparent 70%),
-    linear-gradient(rgba(229,16,47,.07) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(229,16,47,.07) 1px,transparent 1px);
+    radial-gradient(60% 50% at 80% 0%,rgba(var(--accent-rgb),.22),transparent 70%),
+    linear-gradient(rgba(var(--accent-rgb),.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(var(--accent-rgb),.07) 1px,transparent 1px);
   background-size:auto,48px 48px,48px 48px;
-  background-attachment:fixed;animation:grid 20s linear infinite}
-@keyframes grid{to{background-position:0 0,0 48px,48px 0}}
+  background-attachment:fixed}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.03;
-  background:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 3px)}
+  background:repeating-linear-gradient(0deg,var(--scan) 0 1px,transparent 1px 3px)}
 .wrap{max-width:1080px;margin:0 auto;padding:0 var(--s3)}
 .mono{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-soft)}
 
 /* HERO */
 .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:var(--s5);align-items:center;padding:var(--s6) 0 var(--s5)}
-.status{display:inline-flex;align-items:center;gap:var(--s1);padding:6px 12px;border:1px solid var(--border);border-radius:99px;background:rgba(229,16,47,.08)}
+.status{display:inline-flex;align-items:center;gap:var(--s1);padding:6px 12px;border:1px solid var(--border);border-radius:99px;background:rgba(var(--accent-rgb),.08)}
 .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);animation:pulse 2s infinite}
 @keyframes pulse{50%{opacity:.35}}
 h1{font:800 clamp(40px,7vw,76px)/1.02 var(--font-display);letter-spacing:-.03em;margin:var(--s3) 0 var(--s2)}
-h1 em{font-style:normal;color:var(--accent);text-shadow:0 0 40px rgba(229,16,47,.55)}
+h1 em{font-style:normal;color:var(--accent);text-shadow:0 0 40px rgba(var(--accent-rgb),.55)}
 .lead{color:var(--muted);max-width:46ch}
+.lead+.lead{margin-top:var(--s2)}
 .photo{position:relative;justify-self:center;width:100%;max-width:340px;aspect-ratio:3/4}
 .photo img{width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--r);filter:saturate(1.05)}
-.photo::before{content:"";position:absolute;inset:-18px;background:radial-gradient(closest-side,rgba(229,16,47,.45),transparent);filter:blur(30px);z-index:-1}
-.photo i{position:absolute;width:22px;height:22px;border:2px solid var(--accent-soft);animation:blink 3s infinite}
+.photo::before{content:"";position:absolute;inset:-18px;background:radial-gradient(closest-side,rgba(var(--accent-rgb),.45),transparent);filter:blur(30px);z-index:-1}
+.photo i{position:absolute;width:22px;height:22px;border:2px solid var(--accent-soft)}
 .photo i:nth-of-type(1){top:-8px;left:-8px;border-right:0;border-bottom:0}
 .photo i:nth-of-type(2){top:-8px;right:-8px;border-left:0;border-bottom:0}
 .photo i:nth-of-type(3){bottom:-8px;left:-8px;border-right:0;border-top:0}
 .photo i:nth-of-type(4){bottom:-8px;right:-8px;border-left:0;border-top:0}
-.photo span{position:absolute;left:var(--s2);bottom:var(--s2);padding:4px 10px;background:rgba(11,3,7,.8);border:1px solid var(--border);backdrop-filter:blur(6px)}
-@keyframes blink{50%{border-color:var(--accent)}}
-.photo{animation:float 6s ease-in-out infinite,rise 1s .2s cubic-bezier(0,0,.2,1) both}
-@keyframes float{50%{transform:translateY(-10px)}}
-.photo::after{content:"";position:absolute;left:0;right:0;height:2px;background:var(--accent-soft);box-shadow:0 0 18px 4px rgba(255,77,99,.7);animation:scan 4s ease-in-out infinite}
-@keyframes scan{0%{top:0;opacity:0}10%,90%{opacity:.9}100%{top:100%;opacity:0}}
+.photo span{position:absolute;left:var(--s2);bottom:var(--s2);padding:4px 10px;background:rgba(11,3,7,.8);color:#ff4d63;border:1px solid var(--border);backdrop-filter:blur(6px)}
+
+/* SECTIONS */
+.sec{padding-bottom:var(--s6)}
+.sec>.mono{display:block;margin-bottom:var(--s2)}
+.sec>h2{font:800 clamp(28px,4vw,40px)/1.1 var(--font-display);letter-spacing:-.02em;margin-bottom:var(--s4)}
+
+/* CARDS */
+.grid{display:grid;gap:var(--s3);align-items:stretch}
+.grid.two{grid-template-columns:1fr 1fr}
+.grid.three{grid-template-columns:repeat(3,1fr)}
+.card{--mx:50%;--my:50%;position:relative;padding:var(--s4);background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;
+  display:flex;flex-direction:column;gap:var(--s2);transition:transform .2s cubic-bezier(0,0,.2,1),border-color .2s}
+.card::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .35s;
+  background:radial-gradient(320px circle at var(--mx) var(--my),rgba(var(--accent-rgb),.22),transparent 70%)}
+.card:hover{transform:translateY(-3px);border-color:var(--accent)}
+.card:hover::before{opacity:1}
+.card.main{background:linear-gradient(160deg,var(--main-bg),var(--surface) 65%);border-color:var(--accent);box-shadow:0 0 60px -20px rgba(var(--accent-rgb),.6)}
+.card h3{font:700 22px/1.2 var(--font-display)}
+.card p{color:var(--muted);font-size:15px}
+.card .ico{width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--border);border-radius:var(--r);background:rgba(var(--accent-rgb),.08);color:var(--accent-soft)}
+.card .ico svg{width:22px;height:22px}
+.go{margin-top:auto;display:inline-flex;align-items:center;gap:var(--s1);min-height:44px;color:var(--text);text-decoration:none;font:700 15px var(--font-display)}
+.go svg{width:18px;height:18px;flex:none;transition:transform .2s}
+.card:hover .go svg{transform:translate(3px,-3px)}
+.go::after{content:"";position:absolute;inset:0;z-index:2}
+.card a:focus-visible{outline:none}
+.card:has(a:focus-visible){outline:2px solid var(--text);outline-offset:3px}
+
+/* PROJETS */
+.proj{padding:0}
+.proj figure{aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid var(--border);background:var(--bg)}
+.proj img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(0,0,.2,1)}
+.proj:hover img{transform:scale(1.04)}
+.proj .body{padding:var(--s3) var(--s4) var(--s4);display:flex;flex-direction:column;gap:var(--s2);flex:1}
+
+.proj .body>p:not(.off){color:var(--muted);font-size:15px}
+.da{display:flex;flex-direction:column;gap:var(--s2);padding:var(--s2) 0;border-top:1px solid var(--border)}
+.da-v{display:flex;flex-direction:column;gap:var(--s1)}
+.da-v+.da-v{padding-top:var(--s2);border-top:1px dashed var(--border)}
+.da .da-l{color:var(--text);font:700 14px var(--font-display)}
+.pal{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:var(--s1) var(--s2)}
+.pal li{display:inline-flex;align-items:center;gap:6px;font:400 12px var(--font-mono);color:var(--muted)}
+.pal i{width:16px;height:16px;border-radius:50%;background:var(--c);box-shadow:0 0 0 1px rgba(150,140,140,.7);flex:none}
+.da .fonts,.da .mood{font-size:14px}
+.da .fonts b{color:var(--text);font-weight:500;margin-right:6px}
+.proj .alt{font-size:14px}
+.proj .alt a,.story a{position:relative;z-index:3;color:var(--text);text-underline-offset:3px}
+.proj details{position:relative;z-index:3;border-top:1px solid var(--border)}
+.proj summary{display:flex;align-items:center;justify-content:space-between;gap:var(--s2);min-height:44px;cursor:pointer;color:var(--text);font:700 15px var(--font-display);list-style:none}
+.proj summary::-webkit-details-marker{display:none}
+.proj summary::after{content:"+";font:500 20px var(--font-mono);color:var(--accent-soft)}
+.proj details[open] summary::after{content:"\2212"}
+.proj summary:focus-visible{outline:2px solid var(--text);outline-offset:3px}
+.story{display:flex;flex-direction:column;gap:var(--s2);padding-bottom:var(--s2)}
+.story p{font-size:14px;line-height:1.6;color:var(--muted)}
+.off{margin-top:auto;min-height:44px;display:flex;align-items:center;color:var(--muted)}
+
+footer{padding-bottom:var(--s4);color:var(--muted);font-size:13px;text-align:center}
+
+/* MOTION */
+body{animation:grid 20s linear infinite}
+@keyframes grid{to{background-position:0 0,0 48px,48px 0}}
 .hero>div:first-child>*{animation:rise .8s cubic-bezier(0,0,.2,1) both}
 .hero>div:first-child>:nth-child(2){animation-delay:.12s}
 .hero>div:first-child>:nth-child(3){animation-delay:.24s}
+.hero>div:first-child>:nth-child(4){animation-delay:.32s}
 @keyframes rise{from{opacity:0;transform:translateY(24px)}}
-
-/* VITRINES */
-.section-label{display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)}
-.section-label::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
-.vitrines{display:grid;grid-template-columns:1fr 1fr;gap:var(--s3);padding-bottom:var(--s5)}
-.card{--mx:50%;--my:50%;position:relative;display:flex;flex-direction:column;gap:var(--s2);min-height:340px;padding:var(--s4);
-  background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;color:inherit;text-decoration:none;
-  transition:transform .2s cubic-bezier(0,0,.2,1),border-color .2s;animation:glow 4s ease-in-out infinite}
-.card:nth-child(2){animation-delay:1.6s}
-.card::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .35s;
-  background:radial-gradient(320px circle at var(--mx) var(--my),rgba(229,16,47,.22),transparent 70%)}
-.card::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(105deg,transparent 40%,rgba(255,77,99,.14) 50%,transparent 60%);background-size:250% 100%;animation:sheen 5s infinite}
-.card:hover{transform:translateY(-3px);border-color:var(--accent)}
-.card:hover::before{opacity:1}
-.card.main{background:linear-gradient(160deg,#2a0610,var(--surface) 65%);border-color:var(--accent);box-shadow:0 0 60px -20px rgba(229,16,47,.6)}
-@keyframes glow{50%{box-shadow:0 0 40px -18px rgba(229,16,47,.55)}}
-@keyframes sheen{from{background-position:150% 0}to{background-position:-100% 0}}
-.card h2{font:800 clamp(28px,3.6vw,38px)/1.08 var(--font-display);letter-spacing:-.02em}
-.card p{color:var(--muted);max-width:40ch}
-.card ul{list-style:none;padding:0;display:grid;gap:10px;color:var(--muted);font-size:15px}
-.card li{display:flex;gap:10px}
-.card li::before{content:"";flex:none;width:6px;height:6px;margin-top:9px;background:var(--accent);transform:rotate(45deg)}
-.go{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:var(--s2);padding-top:var(--s2);border-top:1px dashed var(--border)}
-.go b{font:700 15px var(--font-display);color:var(--text)}
-.go span{display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--accent);border-radius:var(--r);font-size:20px;color:var(--accent-soft);transition:background .15s,color .15s,transform .15s}
-.card:hover .go span{background:var(--accent);color:#fff;transform:translateX(4px)}
-.card:focus-visible,.btn:focus-visible,a:focus-visible{outline:2px solid var(--text);outline-offset:3px}
-
-/* CTA */
-.cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--s3);padding:var(--s4);border:1px solid var(--border);border-radius:var(--r);margin-bottom:var(--s6)}
-.cta p{font:700 clamp(20px,3vw,28px)/1.2 var(--font-display)}
-.actions{display:flex;flex-wrap:wrap;gap:var(--s2)}
-.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 var(--s4);background:var(--accent);color:#fff;font:700 15px var(--font-display);
-  text-decoration:none;border-radius:var(--r);box-shadow:0 0 30px -4px rgba(229,16,47,.7);transition:background .15s,transform .15s}
-.btn:hover{background:var(--accent-soft);transform:translateY(-2px)}
-.btn.alt{background:transparent;border:1px solid var(--accent);box-shadow:none}
-.btn.alt:hover{background:rgba(229,16,47,.15)}
-.btn:not(.alt)::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.35) 50%,transparent 60%);transform:translateX(-120%);animation:shine 3.5s infinite}
-@keyframes shine{40%,100%{transform:translateX(120%)}}
-footer{padding-bottom:var(--s4);color:var(--muted);font-size:13px;text-align:center}
-
-/* REVEAL */
+.photo{animation:float 6s ease-in-out infinite,rise 1s .2s cubic-bezier(0,0,.2,1) both}
+@keyframes float{50%{transform:translateY(-10px)}}
+.photo::after{content:"";position:absolute;left:0;right:0;height:2px;background:var(--accent-soft);box-shadow:0 0 18px 4px rgba(var(--soft-rgb),.7);animation:scan 4s ease-in-out infinite}
+@keyframes scan{0%{top:0;opacity:0}10%,90%{opacity:.9}100%{top:100%;opacity:0}}
+.photo i{animation:blink 3s infinite}
+@keyframes blink{50%{border-color:var(--accent)}}
 .reveal{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(0,0,.2,1),transform .7s cubic-bezier(0,0,.2,1)}
 .reveal.in{opacity:1;transform:none}
 .card.reveal.in:hover{transform:translateY(-3px)}
+.card::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(105deg,transparent 40%,rgba(var(--soft-rgb),.14) 50%,transparent 60%);background-size:250% 100%;animation:sheen 5s infinite}
+.card:nth-child(2)::after{animation-delay:1.6s}
+.card:nth-child(3)::after{animation-delay:3.2s}
+.card{animation:glow 4s ease-in-out infinite}
+.card:nth-child(2){animation-delay:1.3s}
+.card:nth-child(3){animation-delay:2.6s}
+@keyframes glow{50%{box-shadow:0 0 40px -18px rgba(var(--accent-rgb),.55)}}
+.card.main{animation-name:glow-strong}
+@keyframes glow-strong{50%{box-shadow:0 0 80px -16px rgba(var(--accent-rgb),.8)}}
+@keyframes sheen{from{background-position:150% 0}to{background-position:-100% 0}}
+.sec>h2,.sec>.mono{animation:none}
 
-@media(max-width:860px){.hero{grid-template-columns:1fr;padding-top:var(--s5)}.photo{order:-1;max-width:260px}.vitrines{grid-template-columns:1fr}.card{min-height:0}}
-@media(max-width:480px){.card,.cta{padding:var(--s3)}.btn{width:100%}}
+a:focus-visible{outline:2px solid var(--text);outline-offset:3px}
+
+@media(max-width:860px){.hero{grid-template-columns:1fr;padding-top:var(--s5)}.photo{order:-1;max-width:260px}.grid.two,.grid.three{grid-template-columns:1fr}}
+@media(max-width:480px){.card{padding:var(--s3)}.proj{padding:0}.proj .body{padding:var(--s3)}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 <main class="wrap">
 
-  <section class="hero">
+  <section class="hero" aria-labelledby="titre">
     <div>
-      <span class="status mono"><span class="dot"></span>Lyon · Disponible</span>
-      <h1>Votre image,<br>votre site. <em>Sur mesure.</em></h1>
-      <p class="lead">Je m’appelle Olivier. J’aide les professionnels à soigner leur image en ligne : portrait et personal branding d’un côté, site web de l’autre. Choisissez la vitrine qui vous correspond.</p>
+      <span class="status mono"><span class="dot"></span>Lyon · 22 ans</span>
+      <h1 id="titre">Olivier<br><em>Ruminski.</em></h1>
+      <p class="lead">Informatique et branding visuel : je relie le code et l’image pour des sites soignés.</p>
+      <p class="lead">Je suis diplômé en informatique et en branding visuel, basé à Lyon. Cette page réunit ma vitrine de branding visuel, mon offre de création de sites web et une sélection de réalisations.</p>
     </div>
     <div class="photo">
       <i></i><i></i><i></i><i></i>
-      <img src="pp_olivier_web.jpg" alt="Portrait d’Olivier sur fond rouge" width="680" height="907" fetchpriority="high" decoding="async">
+      <picture>
+        <source srcset="assets/portrait.webp" type="image/webp">
+        <img src="assets/portrait.jpg" alt="Portrait d’Olivier Ruminski, pull noir, sur fond rouge sombre" width="680" height="907" fetchpriority="high" decoding="async">
+      </picture>
       <span class="mono">Olivier · Lyon</span>
     </div>
   </section>
 
-  <div class="section-label"><span class="mono">Mes deux vitrines</span></div>
-  <section class="vitrines" aria-label="Mes deux vitrines">
-    <a class="card main" href="https://reezerxx-blip.github.io/olivier-ruminski-portfolio/">
-      <span class="mono">01 / Branding</span>
-      <h2>Personal branding visuel</h2>
-      <p>Une photo de profil professionnelle et une image cohérente, pour que l’on vous remarque dès le premier regard.</p>
-      <ul>
-        <li>Photo de profil professionnelle</li>
-        <li>Identité visuelle personnelle</li>
-        <li>Pensé pour LinkedIn, site et réseaux</li>
-      </ul>
-      <div class="go"><b>Voir la vitrine branding</b><span aria-hidden="true">→</span></div>
-    </a>
-
-    <a class="card" href="https://reezerxx-blip.github.io/vitrine-developpeur/">
-      <span class="mono">02 / Développeur</span>
-      <h2>Création de sites web</h2>
-      <p>Des sites rapides, soignés et pensés pour convertir. Un tarif clair, sans surprise.</p>
-      <ul>
-        <li>Site vitrine ou site complet, dès 500 €</li>
-        <li>Responsive, SEO de base, mise en ligne incluse</li>
-        <li>Maintenance dès 30 € / mois</li>
-      </ul>
-      <div class="go"><b>Voir la vitrine développeur</b><span aria-hidden="true">→</span></div>
-    </a>
-  </section>
-
-  <section class="cta">
-    <p>Un projet en tête ?<br>Parlons-en.</p>
-    <div class="actions">
-      <a class="btn" href="tel:+33621604344">06 21 60 43 44</a>
-      <a class="btn alt" href="mailto:ruminskiolivier@gmail.com?subject=Prise%20de%20contact">ruminskiolivier@gmail.com</a>
+  <section class="sec" aria-labelledby="acces">
+    <span class="mono">01 / Accès</span>
+    <h2 id="acces">Deux entrées</h2>
+    <div class="grid two">
+      <article class="card main">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/></svg></span>
+        <h3>Vitrine Branding Visuel</h3>
+        <p>Mon travail d’identité visuelle et mon univers graphique.</p>
+        <a class="go" href="https://reezerxx-blip.github.io/olivier-ruminski-portfolio/" target="_blank" rel="noopener noreferrer">Voir la vitrine <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+      </article>
+      <article class="card">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span>
+        <h3>Vitrine développeur</h3>
+        <p>Création de sites sur mesure, tarifs et formules de suivi.</p>
+        <a class="go" href="https://reezerxx-blip.github.io/vitrine-developpeur/" target="_blank" rel="noopener noreferrer">Voir les tarifs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+      </article>
     </div>
   </section>
 
-  <footer>© 2026 Olivier — Branding visuel &amp; création de sites web</footer>
+  <section class="sec" aria-labelledby="creations">
+    <span class="mono">02 / Réalisations</span>
+    <h2 id="creations">Mes créations</h2>
+    <div class="grid three">
+      <article class="card proj">
+        <figure><img src="assets/rocamboles.webp" alt="Palette de six teintes et règle graduée de la maquette Rocamboles, décoratrice d’intérieur à Lyon" width="720" height="450" loading="lazy" decoding="async"></figure>
+        <div class="body">
+          <span class="mono">Maquette de refonte</span>
+          <h3>Rocamboles</h3>
+          <p>Refonte d’un site de décoratrice d’intérieur à Lyon : page unique, palette et direction éditoriale.</p>
+          <div class="da"><span class="mono">Direction artistique</span><div class="da-v"><ul class="pal"><li><i style="--c:#EFE9DC" aria-hidden="true"></i><span>#EFE9DC</span></li><li><i style="--c:#3B2A20" aria-hidden="true"></i><span>#3B2A20</span></li><li><i style="--c:#A9552F" aria-hidden="true"></i><span>#A9552F</span></li><li><i style="--c:#B8894A" aria-hidden="true"></i><span>#B8894A</span></li><li><i style="--c:#738D8B" aria-hidden="true"></i><span>#738D8B</span></li></ul><p class="fonts"><b>Polices</b> Fraunces, DM Sans</p><p class="mood">Le site se lit comme le dossier papier d’une décoratrice posé sur une table : nuancier, étiquettes d’échantillon, règle graduée.</p></div></div>
+          <details><summary>Histoire du projet</summary><div class="story"><p>Maquette de refonte non officielle de rocamboles.com, le site de Christel Duperray, décoratrice d’intérieur à Lyon. Une page unique en HTML, CSS et JS, sans dépendance. Dépôt créé le 14 octobre 2026.</p><p>Le dossier contient un audit du site actuel, la direction artistique et une relecture critique. La palette a été mesurée sur les photos du site d’origine, que la maquette lie depuis rocamboles.com sans les inclure dans le dépôt. Le bleu marine et le corail du site actuel sont abandonnés.</p></div></details>
+          <a class="go" href="https://reezerxx-blip.github.io/rocamboles-vitrine/" target="_blank" rel="noopener noreferrer">Voir le projet <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+        </div>
+      </article>
+      <article class="card proj">
+        <figure><img src="assets/6ldt9.webp" alt="Page d’accueil du site 6.LDT.9 : pilote casqué devant une moto, en noir et blanc, logo globe" width="720" height="450" loading="lazy" decoding="async"></figure>
+        <div class="body">
+          <span class="mono">Site vitrine</span>
+          <h3>6.LDT.9</h3>
+          <p>Vitrine d’une marque de vêtements : veste, t-shirt et cagoule présentés, sans boutique en ligne.</p>
+          <div class="da"><span class="mono">Direction artistique</span><div class="da-v"><ul class="pal"><li><i style="--c:#121214" aria-hidden="true"></i><span>#121214</span></li><li><i style="--c:#ECE9E2" aria-hidden="true"></i><span>#ECE9E2</span></li><li><i style="--c:#E10600" aria-hidden="true"></i><span>#E10600</span></li></ul><p class="fonts"><b>Polices</b> Barlow Condensed, DM Sans, JetBrains Mono</p><p class="mood">Direction « HUD sobre » : globe 3D, fond qui change de couleur à chaque section, cadres de visée et indicateur de section.</p></div></div>
+          <details><summary>Histoire du projet</summary><div class="story"><p>Vitrine d’une marque de streetwear moto à Lyon (description du dépôt). Les prix sont affichés en texte, sans achat en ligne. Dépôt créé le 13 octobre 2026, premier commit le 14 : site statique, motion design et SEO de base.</p><p>Le 16 octobre, la vitrine reçoit des promotions sur le t-shirt et la cagoule (ancien prix barré) et une section « Pack du moment » avec quatre packs, aux montages photo provisoires. Le pied de page renvoie vers la vitrine développeur.</p></div></details>
+          <a class="go" href="https://reezerxx-blip.github.io/6ldt9-vitrine/" target="_blank" rel="noopener noreferrer">Voir le projet <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+        </div>
+      </article>
+      <article class="card proj">
+        <figure><img src="assets/laleona.webp" alt="Salle du restaurant La Leona : murs terracotta, tables en bois clair et chaises en rotin" width="720" height="450" loading="lazy" decoding="async"></figure>
+        <div class="body">
+          <span class="mono">Maquette de refonte</span>
+          <h3>La Leona</h3>
+          <p>Maquette de refonte du site d’un restaurant, bodega et traiteur : carte, ambiance et contact.</p>
+          <div class="da"><span class="mono">Direction artistique</span><div class="da-v"><ul class="pal"><li><i style="--c:#111D17" aria-hidden="true"></i><span>#111D17</span></li><li><i style="--c:#E8E6DD" aria-hidden="true"></i><span>#E8E6DD</span></li><li><i style="--c:#A9B3A6" aria-hidden="true"></i><span>#A9B3A6</span></li><li><i style="--c:#9AA86A" aria-hidden="true"></i><span>#9AA86A</span></li><li><i style="--c:#E2583B" aria-hidden="true"></i><span>#E2583B</span></li></ul><p class="fonts"><b>Polices</b> Archivo, Source Serif 4</p><p class="mood">Concept « Ardoise et étiquette » : fond vert bouteille, titres larges en capitales, prix posés comme sur les ardoises et les boîtes de conserve du lieu.</p></div></div>
+          <details><summary>Histoire du projet</summary><div class="story"><p>Maquette non officielle du site laleona.fr, construite en local le 13 octobre 2026 puis publiée dans le dépôt laleona-maquette, dont la description la dit présentée au client. Treize pages : accueil, restaurant, carte, traiteur, épicerie fine, évènementiel, contact et pages légales.</p><p>La carte est retranscrite en texte et 24 images du site d’origine sont reprises. Le site actuel (WordPress, fond blanc et noir, terracotta) cède la place à un thème sombre vert bouteille unique. Contenus et photos appartiennent à La Leona.</p></div></details>
+          <a class="go" href="https://reezerxx-blip.github.io/laleona-maquette/" target="_blank" rel="noopener noreferrer">Voir le projet <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+        </div>
+      </article>
+      <article class="card proj">
+        <figure><img src="shots/wallace.webp" alt="Les deux versions de la maquette Wallace Bar : à gauche le titre Everyday Pub en crème sur vert bouteille, à droite un titre serif sur fond crème au-dessus d’une photo de brasserie" width="960" height="600" loading="lazy" decoding="async"></figure>
+        <div class="body">
+          <span class="mono">Maquette non officielle · 2 versions</span>
+          <h3>Wallace Bar, Lyon</h3>
+          <p>Refonte du site d’un pub du Vieux-Lyon en deux versions : pub vivant et brasserie éditoriale.</p>
+          <div class="da"><span class="mono">Direction artistique</span><div class="da-v"><p class="da-l">Version A, pub vivant</p><ul class="pal"><li><i style="--c:#1F4D3A" aria-hidden="true"></i><span>#1F4D3A</span></li><li><i style="--c:#F1EADB" aria-hidden="true"></i><span>#F1EADB</span></li><li><i style="--c:#A3322B" aria-hidden="true"></i><span>#A3322B</span></li><li><i style="--c:#E8C547" aria-hidden="true"></i><span>#E8C547</span></li><li><i style="--c:#2A2F2C" aria-hidden="true"></i><span>#2A2F2C</span></li></ul><p class="fonts"><b>Polices</b> Barlow Condensed, Public Sans, Newsreader</p><p class="mood">Ardoise et affiche de match : vert bouteille, titres condensés en capitales, craie jaune.</p></div><div class="da-v"><p class="da-l">Version B, brasserie éditoriale</p><ul class="pal"><li><i style="--c:#F4EEDF" aria-hidden="true"></i><span>#F4EEDF</span></li><li><i style="--c:#E9DFC6" aria-hidden="true"></i><span>#E9DFC6</span></li><li><i style="--c:#26231E" aria-hidden="true"></i><span>#26231E</span></li><li><i style="--c:#4F6B2E" aria-hidden="true"></i><span>#4F6B2E</span></li><li><i style="--c:#A44A19" aria-hidden="true"></i><span>#A44A19</span></li></ul><p class="fonts"><b>Polices</b> Young Serif, Karla</p><p class="mood">Brasserie et carte imprimée : fond kraft clair, mise en page éditoriale.</p></div></div>
+          <p class="alt">Accès direct : <a href="https://reezerxx-blip.github.io/wallace-bar-lyon/pub/" target="_blank" rel="noopener noreferrer">Version A</a> · <a href="https://reezerxx-blip.github.io/wallace-bar-lyon/bar/" target="_blank" rel="noopener noreferrer">Version B</a></p>
+          <details><summary>Histoire du projet</summary><div class="story"><p>Maquette non officielle du site de Wallace Bar, pub du Vieux-Lyon (2 rue Octavio Mey, Lyon 5e). La première version, une page unique en noir et or avec Fraunces, DM Sans et JetBrains Mono, date du 15 octobre 2026.</p><p>Le 20 octobre, un plan de refonte s’appuie sur les faits relevés sur wallacebarlyon.com : un pub vivant et sportif, bière brassée sur place, sport sur 4 écrans, quiz du lundi. Deux versions en découlent, avec les mêmes informations officielles (carte, prix, horaires, bières). Une passe de corrections a suivi une relecture critique.</p><p>Les photos viennent du site officiel et sont utilisées en attente de l’accord du patron, comme l’indique la mention en pied de page.</p></div></details>
+          <a class="go" href="https://reezerxx-blip.github.io/wallace-bar-lyon/choix.html" target="_blank" rel="noopener noreferrer">Voir le projet <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+        </div>
+      </article>
+      <article class="card proj">
+        <figure><img src="shots/lelyons.webp" alt="Accueil de la maquette Le Lyon’s : titre géant crème sur fond marine, lion au trait levant une chope, filet bleu, crème et rouge" width="960" height="600" loading="lazy" decoding="async"></figure>
+        <div class="body">
+          <span class="mono">Maquette non officielle</span>
+          <h3>Le Lyon’s</h3>
+          <p>Maquette de site pour un bar afterwork et grand écran : programme des matchs, carte, infos pratiques.</p>
+          <div class="da"><span class="mono">Direction artistique</span><div class="da-v"><ul class="pal"><li><i style="--c:#0A1630" aria-hidden="true"></i><span>#0A1630</span></li><li><i style="--c:#CC1B27" aria-hidden="true"></i><span>#CC1B27</span></li><li><i style="--c:#1F55F0" aria-hidden="true"></i><span>#1F55F0</span></li><li><i style="--c:#F4EEDF" aria-hidden="true"></i><span>#F4EEDF</span></li></ul><p class="fonts"><b>Polices</b> Anton, DM Sans</p><p class="mood">Un mur d’affiches de bar de sport : titres condensés, filets tricolores, lion dessiné au trait. Rose et cyan néon réservés au bloc Blind Test.</p></div></div>
+          <details><summary>Histoire du projet</summary><div class="story"><p>Proposition de site pour un bar récemment ouvert qui n’en a pas encore : Le Lyon’s, 46 avenue Paul Santy (Lyon 8e), ouvert début avril 2026 selon les éléments transmis. La v1 (marine, laiton, serif) a été écartée. La v2, publiée le 16 octobre 2026 dans le dépôt maquettes-bars-lyon, repart de zéro au plus près de l’Instagram @bar_le_lyons.</p><p>Le lion est dessiné pour la maquette, sans copie du logo réel. Aucune photo du bar n’est reprise : des cadres marqués « PHOTO À FOURNIR PAR LE BAR » les attendent. Le programme de la semaine est présenté comme un exemple vu sur Instagram, à confirmer, et les horaires restent à valider.</p></div></details>
+          <a class="go" href="https://reezerxx-blip.github.io/maquettes-bars-lyon/lelyons/" target="_blank" rel="noopener noreferrer">Voir le projet <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+        </div>
+      </article>
+      <article class="card proj">
+        <figure><img src="shots/super7.webp" alt="Accueil de la maquette Super7 : titre en lettres pixel orange sur béton gris, photo du bar éclairée à la boule à facettes, badge S7 orange" width="960" height="600" loading="lazy" decoding="async"></figure>
+        <div class="body">
+          <span class="mono">Maquette non officielle</span>
+          <h3>Super7</h3>
+          <p>Maquette de site pour un lieu de vie et club : programmation, horaires, accès, photos du lieu.</p>
+          <div class="da"><span class="mono">Direction artistique</span><div class="da-v"><ul class="pal"><li><i style="--c:#D2D0CC" aria-hidden="true"></i><span>#D2D0CC</span></li><li><i style="--c:#2B1A12" aria-hidden="true"></i><span>#2B1A12</span></li><li><i style="--c:#2A0C0D" aria-hidden="true"></i><span>#2A0C0D</span></li><li><i style="--c:#FF4A14" aria-hidden="true"></i><span>#FF4A14</span></li><li><i style="--c:#B3201C" aria-hidden="true"></i><span>#B3201C</span></li></ul><p class="fonts"><b>Polices</b> Super7 Pixel, Archivo</p><p class="mood">Concept « 17h à 01h » : la page va du béton gris de l’ancien garage au rouge des briques de verre, avec une horloge pixel dans l’en-tête.</p></div></div>
+          <details><summary>Histoire du projet</summary><div class="story"><p>Proposition de site pour un lieu récemment ouvert qui n’en a pas encore : Super7, 40 rue Saint-Jérôme (Lyon 7e), ouvert du jeudi au dimanche de 17 h à 1 h d’après la bio Instagram, même équipe que le Super5. Slow opening du 24 au 27 septembre 2026. Contenus tirés du brief et du compte @super7_lyon.</p><p>La direction a évolué en quatre temps : v1, puis v2 (affiche de club typographique, briques de verre, programmation en affiche hebdomadaire), v2.1 après l’analyse des affiches du compte (couleurs mesurées, 6 photos) et v3 (12 photos HD du compte, mobile d’abord). Publiée le 16 octobre 2026 dans le dépôt maquettes-bars-lyon.</p><p>Les photos sont © Super7, reprises pour la maquette et à remplacer par les originaux du bar. Les informations non vérifiées sont marquées « À CONFIRMER ».</p></div></details>
+          <a class="go" href="https://reezerxx-blip.github.io/maquettes-bars-lyon/super7/" target="_blank" rel="noopener noreferrer">Voir le projet <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <footer>© 2026 Olivier Ruminski</footer>
 </main>
 
 <script>
-document.querySelectorAll('.card,.cta').forEach((el,i)=>{el.classList.add('reveal');el.style.transitionDelay=(i%3)*120+'ms'});
+const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.querySelectorAll('.card').forEach((el,i)=>{el.classList.add('reveal');el.style.transitionDelay=(i%3)*120+'ms'});
 const io=new IntersectionObserver(es=>es.forEach(e=>{
   if(!e.isIntersecting)return;
   e.target.classList.add('in');io.unobserve(e.target);
-}),{threshold:.2});
+}),{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-document.querySelectorAll('.card').forEach(c=>{
+if(!still)document.querySelectorAll('.card').forEach(c=>{
   c.addEventListener('pointermove',e=>{
     const r=c.getBoundingClientRect();
     c.style.setProperty('--mx',(e.clientX-r.left)+'px');
